@@ -11,8 +11,8 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
-        <td>フォロー数：<%= user.followings_user.count %></td>
-        <td>フォロワー数：<%= user.follower_user.count %></td>
+        <td>フォロー数：<%= user.followings.count %></td>
+        <td>フォロワー数：<%= user.followers.count %></td>
         <td>
             <% if current_user.id == user.id %>
             <!--ログインユーザー自身の時は空白-->
