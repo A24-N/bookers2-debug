@@ -54,4 +54,25 @@
       </div>
     </div>
   </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p id="notice"><%= notice %></p>
+      </div>
+      <% unless current_page?(root_path) %>
+        <%if user_signed_in? %>
+          <div class="col-md-6">
+            <div class="search_form text-right mt-2 ">
+              <%= form_with url: search_path, method: :get do |f| %>
+                <%= f.text_field :word %>
+                <%= f.select :range, ["User", "Book"] %>
+                <%= f.select :search, [["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]] %>
+                <%= f.submit "検索" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </header>
