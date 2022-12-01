@@ -1,3 +1,4 @@
+$('#comment_counter').html("<%= j(render "book_comments/comments_counter", book: @book) %>");
 $('#book_comment').html("<%= j(render "book_comments/book_comments", book: @book) %>");
 $('#book_comment_comment').val("");
 
