@@ -34,17 +34,19 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_users = GroupUser.where(group_id: @group)
   end
 
   def index
     @groups = Group.all
+    @group_users = GroupUser.all
   end
 
   def destroy
     group = Group.find(params[:id])
     group.destroy
-
   end
+
 
   private
 
