@@ -16,15 +16,30 @@
         </td>
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
-        
+
         <td id="favorite_buttons_<%= book.id %>">
           <%= render 'favorites/favorite-btn', book: book %>
         </td>
-        
+
         <td>
           <p>コメント数：<%= book.book_comments.count %></p>
+        </td>
+        <td>
+          <div id="star-rate<%= book.id%>"></div>
+              <script>
+                $('#star-rate<%= book.id%>').empty();
+                var elem = document.querySelector('#star-rate<%= book.id%>');
+                var opt = {
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                readOnly: true,
+                score: <%= book.star %>,
+                };
+                raty(elem,opt);
+              </script>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
