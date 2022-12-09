@@ -10,6 +10,11 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+#Scope 設定
+  scope :latest, -> {order(created_at: :desc)}
+  scope :star_count, -> {order(star: :desc)}
+  
 
 # 検索条件分岐
   def self.looks(search,word)

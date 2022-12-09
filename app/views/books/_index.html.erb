@@ -25,18 +25,21 @@
           <p>コメント数：<%= book.book_comments.count %></p>
         </td>
         <td>
-          <div id="star-rate<%= book.id%>"></div>
-              <script>
-                $('#star-rate<%= book.id%>').empty();
-                var elem = document.querySelector('#star-rate<%= book.id%>');
-                var opt = {
+          <div id="rate_<%= book.id %>"></div>
+          <script>
+            $('#rate_<%= book.id %>').empty();
+            $(document).on('turbolinks:load', function() {
+              let raty_<%= book.id %> = document.querySelector('#rate_<%= book.id %>');
+              rate_<%= book.id %>.innerHTML = ""
+              let option_<%= book.id %> = {
                 starOff   : '<%= asset_path('star-off.png') %>',
                 starOn    : '<%= asset_path('star-on.png') %>',
                 readOnly: true,
                 score: <%= book.star %>,
-                };
-                raty(elem,opt);
-              </script>
+              };
+              raty(raty_<%= book.id %> ,option_<%= book.id %>);
+            });
+          </script>
         </td>
       </tr>
     <% end %>

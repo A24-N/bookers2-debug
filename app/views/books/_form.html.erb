@@ -24,8 +24,10 @@
 <script>
   // scriptファイルをどのidの部分に配置するかを指定
   $('#star').empty();
-  var elem = document.querySelector('#star');
-  var opt = {
+    $(document).on('turbolinks:load', function() {
+    let raty_elem = document.querySelector('#star');
+    raty_elem.innerHTML = ""
+    let option = {  
     //星画像の指定などのオプションをここに記述,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
@@ -37,7 +39,7 @@
       score: <%= book.star %>,
       readOnly: true,
     <% end %>
-
-   };
-  raty(elem,opt);
+    };
+    raty(raty_elem,option);
+  });
 </script>
