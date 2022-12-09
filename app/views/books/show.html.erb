@@ -21,26 +21,9 @@
             <%= render 'favorites/favorite-btn', book: @book %>
           </td>
           <td id="comment_counter"><p><%= render "book_comments/comments_counter", book: @book %></p></td>
-          <td>
-            <div id="star-rate<%= @book.id%>"></div>
-            
-              <script>
-                $('#star-rate<%= @book.id%>').empty();
-                 var elem = document.querySelector('#star-rate<%= @book.id%>');
-                var opt = {
-                starOff   : '<%= asset_path('star-off.png') %>',
-                starOn    : '<%= asset_path('star-on.png') %>',
-                readOnly: true,
-                score: <%= @book.star %>,
-                };
-                raty(elem,opt);
-              </script>
-              
-            </div>
-          </td>
-
+          <td><%= render "static_rate", book: @book %></td>
           <% if @book.user_id == current_user.id %>
-            <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success", data: {"turbolinks" => false} %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
