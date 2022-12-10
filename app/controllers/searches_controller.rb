@@ -12,12 +12,10 @@ class SearchesController < ApplicationController
       @books = Book.looks(params[:search], params[:word])
     else
 #タグ検索
-      @range = "Tag"
-      @word = params[:tag]
-      @books = Book.where("tag LIKE?", "#{@word}")
+    @range = "Tag"
+    @word = params[:tag]
+    @books = Book.where("tag LIKE?", "#{@word}")
     end
   end
-
-
 end
 

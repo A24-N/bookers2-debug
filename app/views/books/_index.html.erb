@@ -17,11 +17,7 @@
         </td>
         <td><%= link_to book.title, book, class: "book_#{book.id}", data: {"turbolinks" => false} %></td>
         <td><%= book.body %></td>
-        <% if book.tag != nil %>
-          <td><%= link_to book.tag, book %></td>
-        <% else %>
-          <td></td>
-        <% end %>
+        <td><%= link_to book.tag, search_path(tag: book.tag) %></td>
         <td id="favorite_buttons_<%= book.id %>">
           <%= render 'favorites/favorite-btn', book: book %>
         </td>
