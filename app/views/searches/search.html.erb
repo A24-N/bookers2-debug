@@ -48,9 +48,9 @@
                   <%= image_tag book.user.get_profile_image(50,50) %>
                   <% end %>
                 </td>
-                <td><%= link_to book.title, book, class: "book_#{book.id}" %></td>
+                <td><%= link_to book.title, book, class: "book_#{book.id}", data: {"turbolinks" => false} %></td>
                 <td><%= book.body %></td>
-                <td><%= link_to book.tag, book %></td>
+                <td><%= link_to book.tag, search_path(tag: book.tag) %></td>
                 <td id="favorite_buttons_<%= book.id %>">
                   <%= render 'favorites/favorite-btn', book: book %>
                 </td>
