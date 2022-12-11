@@ -50,7 +50,17 @@
                 </td>
                 <td><%= link_to book.title, book, class: "book_#{book.id}", data: {"turbolinks" => false} %></td>
                 <td><%= book.body %></td>
-                <td><%= link_to book.tag, search_path(tag: book.tag) %></td>
+
+
+                <td>
+                  <% book.tags.each do |list| %>
+                    <li class="list-unstyled">
+                  <%= link_to list.tag, search_path(tag: list.tag) %>
+                    </li>
+                  <% end %>
+                </td>
+
+
                 <td id="favorite_buttons_<%= book.id %>">
                   <%= render 'favorites/favorite-btn', book: book %>
                 </td>

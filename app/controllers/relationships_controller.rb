@@ -13,10 +13,12 @@ class RelationshipsController < ApplicationController
   def followings
     @user = User.find(params[:user_id])
     @users = @user.followings
+    @nbook = Book.new
   end
   # フォロワー一覧
   def followers
     @user = User.find(params[:user_id])
     @users = @user.followers
+    @nbook = Book.new
   end
 end

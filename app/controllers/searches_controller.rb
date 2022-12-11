@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
 #タグ検索
     @range = "Tag"
     @word = params[:tag]
-    @books = Book.where("tag LIKE?", "#{@word}")
+    @books = Book.joins(:tags).where("tag LIKE?", "#{@word}")
     end
   end
 end
